@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARRIVAL Magazine — Africa in Motion</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
+:root {
     --gold: #C9A84C;
     --gold-light: #E8C96B;
     --black: #0A0A0A;
@@ -104,11 +96,18 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.85) 100%),
-      url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80') center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transform: scale(1.05);
     animation: heroZoom 12s ease-out forwards;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.85) 100%);
+    z-index: 1;
   }
 
   @keyframes heroZoom {
@@ -287,7 +286,7 @@
   /* ─── ABOUT STRIP ─── */
   .about-strip {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr;
     min-height: 580px;
     overflow: hidden;
   }
@@ -310,7 +309,7 @@
   .about-img-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, transparent 70%, var(--dark));
+    background: linear-gradient(to right, transparent 70%, var(--dark) 70%);
   }
 
   .about-text {
@@ -318,7 +317,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 70px;
+    padding: 10px 0px;
   }
 
   .section-tag {
@@ -823,329 +822,3 @@
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">ARRIVAL<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#">Aviation</a></li>
-    <li><a href="#">Travel</a></li>
-    <li><a href="#">Hospitality</a></li>
-    <li><a href="#">Culture</a></li>
-    <li><a href="#">About</a></li>
-  </ul>
-  <a class="nav-cta" href="#">Subscribe</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Nigeria's Premier Aviation & Lifestyle Magazine</div>
-    <h1 class="hero-title">
-      Africa<br>
-      Is <em>In</em><br>
-      Motion.
-    </h1>
-    <p class="hero-sub">Nigeria's boldest aviation and lifestyle publication — reframing the continent through travel, luxury, innovation, and global connectivity since 2005.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#">Read Latest Issue</a>
-      <a class="btn-ghost" href="#">Explore Stories</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">22+</div>
-      <div class="stat-label">FAAN Airports</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">African Cities</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-num">20</div>
-      <div class="stat-label">Years of Stories</div>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker">
-    <span class="ticker-item">Aviation <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Lagos <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Luxury Travel <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Nairobi <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Hospitality <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Accra <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Africa Rising <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Premium Lifestyle <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Air Travel <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Aviation <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Lagos <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Luxury Travel <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Nairobi <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Hospitality <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Accra <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Africa Rising <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Premium Lifestyle <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Air Travel <span class="ticker-dot"></span></span>
-  </div>
-</div>
-
-<!-- ABOUT STRIP -->
-<section class="about-strip">
-  <div class="about-img">
-    <img src="https://images.unsplash.com/photo-1559581673-f77e48a79ccf?w=900&q=80" alt="African skyline">
-    <div class="about-img-overlay"></div>
-  </div>
-  <div class="about-text reveal">
-    <div class="section-tag">Our Story</div>
-    <h2 class="section-title">Where <em>Africa</em><br>Meets the Sky</h2>
-    <p class="section-body">
-      Since 2005, ARRIVAL Magazine has been Nigeria's leading voice at the intersection of aviation, luxury travel, and African culture. We don't just document the journey — we shape how Africa is seen by the world.
-      <br><br>
-      Distributed across Nigeria's 22 FAAN-managed airports and global digital platforms, we reach the executives, diplomats, and high-net-worth travelers who are defining Africa's next era.
-    </p>
-    <a class="btn-primary" href="#">Our Mission</a>
-  </div>
-</section>
-
-<!-- FEATURES GRID -->
-<section class="features">
-  <div class="features-header reveal">
-    <div>
-      <div class="section-tag">Editorial Focus</div>
-      <h2 class="section-title">Stories That <em>Move</em> You</h2>
-    </div>
-    <a class="view-all" href="#">All Stories</a>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1540339832862-474599807836?w=700&q=80" alt="Aviation">
-      <div class="feature-overlay">
-        <div class="feature-cat">Aviation</div>
-        <div class="feature-title">Nigeria's Airport Infrastructure Transformation</div>
-        <div class="feature-excerpt">How FAAN's bold expansion is reshaping the future of air travel across West Africa.</div>
-      </div>
-    </div>
-    <div class="feature-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=80" alt="Hospitality">
-      <div class="feature-overlay">
-        <div class="feature-cat">Hospitality</div>
-        <div class="feature-title">The New Luxury Standard in African Hospitality</div>
-        <div class="feature-excerpt">Premium hotels and resorts rewriting the rules of African elegance.</div>
-      </div>
-    </div>
-    <div class="feature-card reveal reveal-delay-3">
-      <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80" alt="Culture">
-      <div class="feature-overlay">
-        <div class="feature-cat">Culture & Lifestyle</div>
-        <div class="feature-title">The Jetset African: Living Without Borders</div>
-        <div class="feature-excerpt">Celebrating the creatives, entrepreneurs, and diplomats defining global African identity.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DESTINATIONS -->
-<section class="destinations">
-  <div class="dest-header reveal">
-    <div class="section-tag">Destinations</div>
-    <h2 class="section-title">Africa, Uncovered</h2>
-  </div>
-  <div class="dest-grid">
-    <div class="dest-card reveal">
-      <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=900&q=80" alt="Lagos">
-      <div class="dest-overlay">
-        <div class="dest-name">Lagos</div>
-        <div class="dest-country">Nigeria</div>
-      </div>
-    </div>
-    <div class="dest-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=700&q=80" alt="Nairobi">
-      <div class="dest-overlay">
-        <div class="dest-name">Nairobi</div>
-        <div class="dest-country">Kenya</div>
-      </div>
-    </div>
-    <div class="dest-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=80" alt="Cape Town">
-      <div class="dest-overlay">
-        <div class="dest-name">Cape Town</div>
-        <div class="dest-country">South Africa</div>
-      </div>
-    </div>
-    <div class="dest-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=80" alt="Accra">
-      <div class="dest-overlay">
-        <div class="dest-name">Accra</div>
-        <div class="dest-country">Ghana</div>
-      </div>
-    </div>
-    <div class="dest-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=700&q=80" alt="Marrakesh">
-      <div class="dest-overlay">
-        <div class="dest-name">Marrakesh</div>
-        <div class="dest-country">Morocco</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MISSION BAND -->
-<section class="mission">
-  <p class="mission-quote reveal">
-    "Africa is not just a destination.<br>It is a <strong>global force in motion</strong>."
-  </p>
-  <p class="mission-attr reveal">— ARRIVAL Magazine, Est. 2005</p>
-</section>
-
-<!-- LATEST COVERAGE -->
-<section class="latest">
-  <div class="latest-header reveal">
-    <div>
-      <div class="section-tag">Latest Coverage</div>
-      <h2 class="section-title">From the Runway</h2>
-    </div>
-    <a class="view-all" href="#">All Articles</a>
-  </div>
-  <div class="latest-grid">
-    <div class="article-card reveal">
-      <div class="article-img-wrap">
-        <img class="article-img" src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=800&q=80" alt="Aviation">
-      </div>
-      <div class="article-cat">Aviation</div>
-      <div class="article-title">Private Jet Ownership in Nigeria: A Market Coming of Age</div>
-      <div class="article-meta">March 2025 · 8 min read</div>
-    </div>
-    <div class="article-card reveal reveal-delay-1">
-      <div class="article-img-wrap">
-        <img class="article-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80" alt="Hotel">
-      </div>
-      <div class="article-cat">Hospitality</div>
-      <div class="article-title">Inside the Most Anticipated Hotel Openings Across Africa</div>
-      <div class="article-meta">February 2025 · 5 min read</div>
-    </div>
-    <div class="article-card reveal reveal-delay-2">
-      <div class="article-img-wrap">
-        <img class="article-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80" alt="Culture">
-      </div>
-      <div class="article-cat">Culture</div>
-      <div class="article-title">Bimbo Ademoye: Living at the Intersection of Art and Altitude</div>
-      <div class="article-meta">January 2025 · 6 min read</div>
-    </div>
-  </div>
-</section>
-
-<!-- DISTRIBUTION -->
-<section class="distribution">
-  <div class="dist-text reveal">
-    <div class="section-tag">Reach & Distribution</div>
-    <h2 class="section-title">Your Brand,<br><em>At Altitude</em></h2>
-    <p class="section-body">
-      ARRIVAL Magazine reaches Africa's most influential audiences at exactly the right moment — when they're in motion. Partner with us to place your brand in front of executives, diplomats, and high-net-worth travellers across Nigeria's airports and beyond.
-    </p>
-    <a class="dist-cta" href="mailto:sales@ngarrival.com">Partner With Us</a>
-  </div>
-  <div class="dist-stats reveal">
-    <div class="dist-stat-box">
-      <div class="dist-num">22</div>
-      <div class="dist-lbl">FAAN Airports</div>
-    </div>
-    <div class="dist-stat-box">
-      <div class="dist-num">3</div>
-      <div class="dist-lbl">African Offices</div>
-    </div>
-    <div class="dist-stat-box">
-      <div class="dist-num">20</div>
-      <div class="dist-lbl">Years in Print</div>
-    </div>
-    <div class="dist-stat-box">
-      <div class="dist-num">∞</div>
-      <div class="dist-lbl">Digital Reach</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-brand-name">ARRIVAL</div>
-      <p class="footer-tagline">Nigeria's premier aviation and lifestyle publication. Reframing Africa through travel, luxury, and global connectivity since 2005.</p>
-      <div class="footer-contact">
-        <div><a href="mailto:hello@ngarrival.com">hello@ngarrival.com</a></div>
-        <div><a href="mailto:sales@ngarrival.com">sales@ngarrival.com</a></div>
-        <div>+234 803 337 0666</div>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Sections</h4>
-      <ul>
-        <li><a href="#">Aviation</a></li>
-        <li><a href="#">Travel</a></li>
-        <li><a href="#">Hospitality</a></li>
-        <li><a href="#">Culture</a></li>
-        <li><a href="#">Lifestyle</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Advertise</a></li>
-        <li><a href="#">Distribution</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Offices</h4>
-      <ul>
-        <li><a href="#">Lagos, Nigeria</a></li>
-        <li><a href="#">Nairobi, Kenya</a></li>
-        <li><a href="#">Accra, Ghana</a></li>
-        <li><a href="#">ngarrival.com</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 ARRIVAL Magazine. All rights reserved.</span>
-    <span>Lagos · Nairobi · Accra</span>
-  </div>
-</footer>
-
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  reveals.forEach(el => observer.observe(el));
-
-  // Nav background on scroll
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      nav.style.background = 'rgba(10,10,10,0.97)';
-      nav.style.backdropFilter = 'blur(12px)';
-    } else {
-      nav.style.background = '';
-      nav.style.backdropFilter = 'blur(4px)';
-    }
-  });
-</script>
-</body>
-</html>
