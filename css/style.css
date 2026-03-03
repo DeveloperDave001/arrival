@@ -10,6 +10,65 @@
     --navy: #000068;
   }
 
+  /* ─── MOBILE BLOCKER ─── */
+  .mobile-blocker {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .mobile-blocker-content {
+    max-width: 400px;
+  }
+
+  .mobile-blocker-icon {
+    font-size: 64px;
+    margin-bottom: 30px;
+  }
+
+  .mobile-blocker h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .mobile-blocker p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.8);
+    margin-bottom: 30px;
+  }
+
+  .mobile-blocker-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .mobile-blocker {
+      display: flex;
+    }
+    body > *:not(.mobile-blocker) {
+      display: none !important;
+    }
+  }
+
   /* ─── PRELOADER ─── */
   .preloader {
     position: fixed;
