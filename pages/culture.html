@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture - ARRIVAL Magazine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .culture-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .culture-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,104,0.75) 0%, rgba(0,0,104,0.5) 50%, rgba(0,0,104,0.85) 100%),
+      url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80') center/cover no-repeat;
+    animation: heroZoom 8s ease-out forwards;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.0); }
+  }
+
+  .culture-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    max-width: 900px;
+  }
+
+  .culture-hero-tag {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    padding: 12px 28px;
+  }
+
+  .culture-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 90px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .culture-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .culture-hero-sub {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.85);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .culture-section {
+    padding: 100px 60px;
+    background: var(--black);
+  }
+
+  .culture-intro {
+    max-width: 850px;
+    margin: 0 auto 80px;
+    text-align: center;
+    position: relative;
+  }
+
+  .culture-intro::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .culture-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 4.5vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+
+  .culture-intro h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .culture-intro p {
+    font-size: 17px;
+    line-height: 1.95;
+    color: rgba(245,242,236,0.7);
+  }
+
+  .culture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .culture-card {
+    padding: 45px;
+    background: var(--dark);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .culture-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .culture-card:hover {
+    transform: translateY(-8px);
+    background: var(--dark-2);
+  }
+
+  .culture-card-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .culture-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .culture-card p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(245,242,236,0.65);
+    margin-bottom: 20px;
+  }
+
+  .culture-card ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .culture-card ul li {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 6px 14px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+  }
+
+  .culture-featured {
+    padding: 100px 60px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--black) 100%);
+    position: relative;
+  }
+
+  .culture-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .featured-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .featured-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 4.5vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .featured-header h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .featured-item {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .featured-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: grayscale(30%);
+  }
+
+  .featured-item:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+  }
+
+  .featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,104,0.95) 0%, rgba(0,0,104,0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+  }
+
+  .featured-overlay h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .featured-overlay span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .culture-quote {
+    padding: 140px 60px;
+    background: var(--black);
+    text-align: center;
+    position: relative;
+  }
+
+  .culture-quote::before,
+  .culture-quote::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  .culture-quote::before { left: 60px; }
+  .culture-quote::after { right: 60px; }
+
+  .culture-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4.5vw, 52px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--white);
+    max-width: 950px;
+    margin: 0 auto;
+  }
+
+  .culture-quote blockquote strong {
+    color: var(--gold);
+  }
+
+  .culture-quote cite {
+    display: block;
+    margin-top: 35px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .culture-cta {
+    padding: 100px 60px;
+    background: var(--gold);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .culture-cta content: '::before {
+   ✦ ✦ ✦';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(0,0,104,0.2);
+    letter-spacing: 20px;
+  }
+
+  .culture-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 4.5vw, 52px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+
+  .culture-cta p {
+    font-size: 17px;
+    color: rgba(0,0,104,0.7);
+    max-width: 520px;
+    margin: 0 auto 32px;
+  }
+
+  .culture-cta-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    padding: 18px 44px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .culture-cta-btn:hover {
+    background: var(--dark-2);
+    transform: translateY(-3px);
+  }
+
+  /* Light mode */
+  body.light-mode .culture-section {
+    background: var(--black);
+  }
+
+  body.light-mode .culture-intro h2,
+  body.light-mode .featured-header h2 {
+    color: var(--white);
+  }
+
+  body.light-mode .culture-intro p,
+  body.light-mode .culture-card p {
+    color: rgba(255,255,255,0.7);
+  }
+
+  body.light-mode .culture-card {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .culture-featured {
+    background: linear-gradient(135deg, var(--dark-2) 0%, var(--black) 100%);
+  }
+
+  body.light-mode .culture-quote {
+    background: var(--black);
+  }
+
+  @media (max-width: 1100px) {
+    .featured-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .culture-grid {
+      grid-template-columns: 1fr;
+    }
+    .featured-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .culture-section, .culture-featured, .culture-quote, .culture-cta {
+      padding: 60px 30px;
+    }
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+    .culture-quote::before,
+    .culture-quote::after {
+      display: none;
+    }
+  }
+
+  /* Ticker styles */
+  .culture-ticker {
+    background: var(--dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .culture-ticker .ticker-item {
+    color: var(--gold);
+  }
+
+  .culture-ticker .ticker-dot {
+    background: rgba(201,168,76,0.5);
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="preloader-content">
+    <div class="preloader-logo">ARRIVAL<span>.</span></div>
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+    <div class="preloader-text">Loading...</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">ARRIVAL<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="travel.html">Travel</a></li>
+    <li><a href="hospitality.html">Hospitality</a></li>
+    <li><a href="#">Culture</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon dark">☀️</span>
+      <span class="theme-icon light">🌙</span>
+      <span class="theme-text"></span>
+    </button>
+    <a class="nav-cta" href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- CULTURE HERO -->
+<section class="culture-hero">
+  <div class="culture-hero-bg"></div>
+  <div class="culture-hero-content">
+    <div class="culture-hero-tag">Culture</div>
+    <h1>The Pulse of a Continent<br><em>In Motion</em></h1>
+    <p class="culture-hero-sub">By ARRIVAL Magazine — Culture is where identity meets influence — where Africa tells its story on its own terms.</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap culture-ticker">
+  <div class="ticker">
+    <span class="ticker-item">Film & Cinema <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Music & Afrobeats <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Fashion & Design <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Art & Expression <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Heritage <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Film & Cinema <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Music & Afrobeats <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Fashion & Design <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Art & Expression <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Heritage <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- CULTURE INTRO -->
+<section class="culture-section">
+  <div class="culture-intro">
+    <h2>Reframing the <em>African</em> Narrative</h2>
+    <p>For too long, Africa's cultural identity was simplified. Today, it is layered, global, and unapologetically dynamic. We spotlight film and television, music, fashion, visual arts, and literature — presenting Africa not as a backdrop, but as a cultural force.</p>
+  </div>
+
+  <div class="culture-grid">
+    <div class="culture-card">
+      <span class="culture-card-icon">🎬</span>
+      <h3>Film & Screen</h3>
+      <p>African cinema is experiencing a powerful renaissance. From Nollywood to pan-African collaborations, storytelling is evolving in scale and sophistication.</p>
+      <ul>
+        <li>Premieres</li>
+        <li>Industry Shifts</li>
+        <li>Streaming</li>
+      </ul>
+    </div>
+
+    <div class="culture-card">
+      <span class="culture-card-icon">🎵</span>
+      <h3>Music & Global Sound</h3>
+      <p>Africa's sound travels faster than ever. Afrobeats, Amapiano, and genre fusions are shaping global playlists, tours, and collaborations.</p>
+      <ul>
+        <li>Afrobeats</li>
+        <li>Amapiano</li>
+        <li>Global Charts</li>
+      </ul>
+    </div>
+
+    <div class="culture-card">
+      <span class="culture-card-icon">👗</span>
+      <h3>Fashion & Design</h3>
+      <p>African fashion has moved from niche to necessary. Designers blend indigenous textiles with contemporary tailoring and global runway aesthetics.</p>
+      <ul>
+        <li>Runway</li>
+        <li>Textiles</li>
+        <li>Heritage</li>
+      </ul>
+    </div>
+
+    <div class="culture-card">
+      <span class="culture-card-icon">🎨</span>
+      <h3>Art & Expression</h3>
+      <p>From contemporary galleries to public installations, African art is expanding conversations about history, identity, and futurism.</p>
+      <ul>
+        <li>Galleries</li>
+        <li>NFT Art</li>
+        <li>Exhibitions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="culture-featured">
+  <div class="featured-header">
+    <h2>Creative <em>Voices</em></h2>
+  </div>
+  <div class="featured-grid">
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="Music">
+      <div class="featured-overlay">
+        <span>Music</span>
+        <h4>Afrobeats</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Fashion">
+      <div class="featured-overlay">
+        <span>Fashion</span>
+        <h4>Lagos Fashion</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&q=80" alt="Film">
+      <div class="featured-overlay">
+        <span>Film</span>
+        <h4>Nollywood</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600&q=80" alt="Art">
+      <div class="featured-overlay">
+        <span>Art</span>
+        <h4>Contemporary</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Dance">
+      <div class="featured-overlay">
+        <span>Performance</span>
+        <h4>Dance</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&q=80" alt="Photography">
+      <div class="featured-overlay">
+        <span>Visual</span>
+        <h4>Photography</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=600&q=80" alt="Design">
+      <div class="featured-overlay">
+        <span>Design</span>
+        <h4>Architecture</h4>
+      </div>
+    </div>
+    <div class="featured-item">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Lifestyle">
+      <div class="featured-overlay">
+        <span>Lifestyle</span>
+        <h4>Modern Living</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="culture-quote">
+  <blockquote>
+    "African culture no longer stays within borders.<br>It <strong>shapes global conversations</strong>."
+  </blockquote>
+  <cite>— ARRIVAL Magazine</cite>
+</section>
+
+<!-- CTA -->
+<section class="culture-cta">
+  <h2>Where Identity Takes Flight</h2>
+  <p>Discover Africa's cultural evolution — bold, evolving, and globally relevant.</p>
+  <a href="#" class="culture-cta-btn">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">ARRIVAL</div>
+      <p class="footer-tagline">Nigeria's premier aviation and lifestyle publication. Reframing Africa through travel, luxury, and global connectivity since 2005.</p>
+      <div class="footer-contact">
+        <div><a href="mailto:hello@ngarrival.com">hello@ngarrival.com</a></div>
+        <div><a href="mailto:sales@ngarrival.com">sales@ngarrival.com</a></div>
+        <div>+234 803 337 0666</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="#">Aviation</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Hospitality</a></li>
+<li><a href="culture.html">Culture</a></li>
+    <li><a href="about.html">About</a></li>
+        <li><a href="#">Lifestyle</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Distribution</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Offices</h4>
+      <ul>
+        <li><a href="#">Lagos, Nigeria</a></li>
+        <li><a href="#">Nairobi, Kenya</a></li>
+        <li><a href="#">Accra, Ghana</a></li>
+        <li><a href="#">ngarrival.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ARRIVAL Magazine. All rights reserved.</span>
+    <span>Lagos · Nairobi · Accra</span>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

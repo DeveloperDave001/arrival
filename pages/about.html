@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - ARRIVAL Magazine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .about-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,104,0.8) 0%, rgba(0,0,104,0.6) 50%, rgba(0,0,104,0.9) 100%),
+      url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .about-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    max-width: 900px;
+  }
+
+  .about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .about-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .about-hero p {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.85);
+  }
+
+  .about-section {
+    padding: 100px 60px;
+    background: var(--black);
+  }
+
+  .about-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .about-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .about-intro h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .about-intro p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: rgba(245,242,236,0.7);
+  }
+
+  .about-story {
+    padding: 100px 60px;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-story-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .about-story-content h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .about-story-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: rgba(245,242,236,0.7);
+    margin-bottom: 20px;
+  }
+
+  .about-story-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .about-stat {
+    background: var(--dark-2);
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .about-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .about-stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.6);
+    margin-top: 10px;
+  }
+
+  .about-mission {
+    padding: 100px 60px;
+    background: var(--black);
+    text-align: center;
+  }
+
+  .about-mission h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 50px;
+  }
+
+  .about-mission h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .about-mission-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  .about-mission-item {
+    padding: 40px 25px;
+    background: var(--dark);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .about-mission-item:hover {
+    transform: translateY(-8px);
+  }
+
+  .about-mission-item-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .about-mission-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .about-mission-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.6);
+  }
+
+  .about-pillars {
+    padding: 100px 60px;
+    background: var(--dark);
+  }
+
+  .about-pillars-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .about-pillars-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .about-pillars-header h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .about-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .about-pillar {
+    padding: 35px 20px;
+    background: var(--dark-2);
+    border-radius: 8px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+    transition: all 0.3s ease;
+  }
+
+  .about-pillar:hover {
+    background: var(--black);
+  }
+
+  .about-pillar-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .about-pillar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .about-pillar p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(245,242,236,0.6);
+  }
+
+  .about-leadership {
+    padding: 100px 60px;
+    background: var(--black);
+    text-align: center;
+  }
+
+  .about-leadership h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 50px;
+  }
+
+  .about-leadership h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .about-leader {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .about-leader-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: var(--dark-2);
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    border: 3px solid var(--gold);
+  }
+
+  .about-leader h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .about-leader span {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .about-cta {
+    padding: 100px 60px;
+    background: var(--gold);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-cta::before {
+    content: '✦ ✦ ✦';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(0,0,104,0.2);
+    letter-spacing: 15px;
+  }
+
+  .about-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .about-cta p {
+    font-size: 17px;
+    color: rgba(0,0,104,0.7);
+    max-width: 500px;
+    margin: 0 auto 30px;
+  }
+
+  .about-cta-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    padding: 16px 40px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .about-cta-btn:hover {
+    background: var(--dark-2);
+  }
+
+  /* Light mode */
+  body.light-mode .about-section {
+    background: var(--black);
+  }
+
+  body.light-mode .about-story {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .about-mission {
+    background: var(--black);
+  }
+
+  body.light-mode .about-mission-item {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .about-pillars {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .about-pillar {
+    background: var(--dark);
+  }
+
+  body.light-mode .about-pillar:hover {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .about-leadership {
+    background: var(--black);
+  }
+
+  @media (max-width: 1000px) {
+    .about-mission-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .about-pillars-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .about-story {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .about-pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-section, .about-story, .about-mission, .about-pillars, .about-leadership, .about-cta {
+      padding: 60px 30px;
+    }
+    .about-mission-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="preloader-content">
+    <div class="preloader-logo">ARRIVAL<span>.</span></div>
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+    <div class="preloader-text">Loading...</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">ARRIVAL<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="travel.html">Travel</a></li>
+    <li><a href="hospitality.html">Hospitality</a></li>
+    <li><a href="culture.html">Culture</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon dark">☀️</span>
+      <span class="theme-icon light">🌙</span>
+      <span class="theme-text"></span>
+    </button>
+    <a class="nav-cta" href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- ABOUT HERO -->
+<section class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-content">
+    <h1>Africa in Motion.<br><em>Stories That Connect</em> the World.</h1>
+    <p>ARRIVAL Magazine is an African aviation, travel, and lifestyle publication dedicated to telling the continent's stories through movement, culture, innovation, and global connectivity.</p>
+  </div>
+</section>
+
+<!-- ABOUT INTRO -->
+<section class="about-section">
+  <div class="about-intro">
+    <h2>Our <em>Story</em></h2>
+    <p>ARRIVAL launched in 2005 at a defining moment in Nigeria's aviation and tourism growth, positioning itself at the intersection of travel, business, and lifestyle. Over nearly two decades, the brand has expanded beyond print into a content-rich digital ecosystem while maintaining strategic distribution across Nigeria's major airports and international hubs. With offices and partnerships spanning Lagos, Nairobi, and Accra, ARRIVAL reflects a truly pan-African outlook.</p>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="about-story">
+  <div class="about-story-content">
+    <h2>From Print to <em>Digital</em> Excellence</h2>
+    <p>Founded in 2005 with a clear vision — to present Nigeria and Africa as destinations of excellence, opportunity, and world-class experiences. What began as a premium print publication has evolved into a dynamic digital platform serving a global audience.</p>
+    <p>Early editions gained visibility in airport lounges, embassies, and executive spaces, quickly establishing the publication as a trusted voice within aviation and hospitality circles.</p>
+  </div>
+  <div class="about-story-stats">
+    <div class="about-stat">
+      <div class="about-stat-num">20+</div>
+      <div class="about-stat-label">Years of Excellence</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">3</div>
+      <div class="about-stat-label">Pan-African Offices</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">22</div>
+      <div class="about-stat-label">Airport Locations</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">∞</div>
+      <div class="about-stat-label">Digital Reach</div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="about-mission">
+  <h2>Our <em>Mission</em></h2>
+  <div class="about-mission-grid">
+    <div class="about-mission-item">
+      <div class="about-mission-item-icon">🌍</div>
+      <h3>Connect</h3>
+      <p>Bridging Africa with the global community through authentic storytelling.</p>
+    </div>
+    <div class="about-mission-item">
+      <div class="about-mission-item-icon">⭐</div>
+      <h3>Elevate</h3>
+      <p>High editorial and visual standards that showcase excellence.</p>
+    </div>
+    <div class="about-mission-item">
+      <div class="about-mission-item-icon">🎯</div>
+      <h3>Celebrate</h3>
+      <p>Amplifying the people, destinations, and ideas shaping Africa's future.</p>
+    </div>
+    <div class="about-mission-item">
+      <div class="about-mission-item-icon">💫</div>
+      <h3>Inspire</h3>
+      <p>Encouraging exploration, investment, and cultural appreciation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="about-pillars">
+  <div class="about-pillars-header">
+    <h2>What We <em>Cover</em></h2>
+  </div>
+  <div class="about-pillars-grid">
+    <div class="about-pillar">
+      <span class="about-pillar-icon">✈️</span>
+      <h3>Aviation</h3>
+      <p>Industry insights, airport development, and airline innovation</p>
+    </div>
+    <div class="about-pillar">
+      <span class="about-pillar-icon">🧳</span>
+      <h3>Travel</h3>
+      <p>Destination storytelling and curated experiences</p>
+    </div>
+    <div class="about-pillar">
+      <span class="about-pillar-icon">🏨</span>
+      <h3>Hospitality</h3>
+      <p>Hotels, resorts, and service excellence</p>
+    </div>
+    <div class="about-pillar">
+      <span class="about-pillar-icon">🎭</span>
+      <h3>Culture</h3>
+      <p>Film, music, fashion, and creative voices</p>
+    </div>
+    <div class="about-pillar">
+      <span class="about-pillar-icon">✨</span>
+      <h3>Lifestyle</h3>
+      <p>Luxury, business, and modern African living</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="about-leadership">
+  <h2>Our <em>Leadership</em></h2>
+  <div class="about-leader">
+    <div class="about-leader-img">👤</div>
+    <h3>Adeola Fadairo</h3>
+    <span>Publisher</span>
+    <p style="margin-top: 20px; color: rgba(245,242,236,0.6); font-size: 15px; line-height: 1.8;">Leading ARRIVAL's growth from its early print foundation to its modern digital relaunch, upholding a reputation for premium storytelling and industry relevance.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <h2>Every Journey Begins<br>With Movement</h2>
+  <p>Join us as we continue to tell stories that move — across skies, cities, cultures, and experiences.</p>
+  <a href="#" class="about-cta-btn">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">ARRIVAL</div>
+      <p class="footer-tagline">Nigeria's premier aviation and lifestyle publication. Reframing Africa through travel, luxury, and global connectivity since 2005.</p>
+      <div class="footer-contact">
+        <div><a href="mailto:hello@ngarrival.com">hello@ngarrival.com</a></div>
+        <div><a href="mailto:sales@ngarrival.com">sales@ngarrival.com</a></div>
+        <div>+234 803 337 0666</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="#">Aviation</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Hospitality</a></li>
+        <li><a href="#">Culture</a></li>
+        <li><a href="#">Lifestyle</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Distribution</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Offices</h4>
+      <ul>
+        <li><a href="#">Lagos, Nigeria</a></li>
+        <li><a href="#">Nairobi, Kenya</a></li>
+        <li><a href="#">Accra, Ghana</a></li>
+        <li><a href="#">ngarrival.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ARRIVAL Magazine. All rights reserved.</span>
+    <span>Lagos · Nairobi · Accra</span>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

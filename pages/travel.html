@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel - ARRIVAL Magazine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .travel-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .travel-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,104,0.7) 0%, rgba(0,0,104,0.5) 50%, rgba(0,0,104,0.85) 100%),
+      url('https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .travel-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    max-width: 900px;
+  }
+
+  .travel-hero-tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 8px 20px;
+  }
+
+  .travel-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .travel-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .travel-hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .travel-section {
+    padding: 100px 60px;
+    background: var(--black);
+  }
+
+  .travel-intro {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+
+  .travel-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .travel-intro h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .travel-intro p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: rgba(245,242,236,0.7);
+  }
+
+  .travel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+  }
+
+  .travel-card {
+    padding: 40px;
+    background: var(--dark);
+    border-left: 3px solid var(--gold);
+  }
+
+  .travel-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .travel-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(245,242,236,0.6);
+  }
+
+  .travel-card ul {
+    margin-top: 20px;
+    list-style: none;
+  }
+
+  .travel-card ul li {
+    font-size: 14px;
+    color: rgba(245,242,236,0.7);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .travel-card ul li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 8px;
+  }
+
+  .travel-spotlight {
+    padding: 100px 60px;
+    background: var(--dark);
+  }
+
+  .spotlight-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .spotlight-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .spotlight-header h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .spotlight-item {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .spotlight-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .spotlight-item:hover img {
+    transform: scale(1.08);
+  }
+
+  .spotlight-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,104,0.9) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+  }
+
+  .spotlight-overlay h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .spotlight-overlay span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .travel-quote {
+    padding: 120px 60px;
+    background: var(--black);
+    text-align: center;
+  }
+
+  .travel-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--white);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .travel-quote blockquote strong {
+    color: var(--gold);
+  }
+
+  .travel-quote cite {
+    display: block;
+    margin-top: 30px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .travel-cta {
+    padding: 100px 60px;
+    background: var(--gold);
+    text-align: center;
+  }
+
+  .travel-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .travel-cta p {
+    font-size: 16px;
+    color: rgba(0,0,104,0.7);
+    max-width: 500px;
+    margin: 0 auto 30px;
+  }
+
+  .travel-cta-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    padding: 16px 40px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .travel-cta-btn:hover {
+    background: var(--dark-2);
+  }
+
+  /* Light mode styles */
+  body.light-mode .travel-section,
+  body.light-mode .travel-quote {
+    background: var(--black);
+  }
+
+  body.light-mode .travel-spotlight {
+    background: var(--dark);
+  }
+
+  body.light-mode .travel-card {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .travel-card h3 {
+    color: var(--white);
+  }
+
+  body.light-mode .travel-intro h2,
+  body.light-mode .spotlight-header h2,
+  body.light-mode .travel-quote blockquote {
+    color: var(--white);
+  }
+
+  body.light-mode .travel-intro p,
+  body.light-mode .travel-card p,
+  body.light-mode .travel-card ul li {
+    color: rgba(255,255,255,0.7);
+  }
+
+  body.light-mode .travel-hero-bg {
+    background: linear-gradient(to bottom, rgba(0,0,104,0.7) 0%, rgba(0,0,104,0.5) 50%, rgba(0,0,104,0.85) 100%),
+      url('https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1600&q=80') center/cover no-repeat;
+  }
+
+  body.light-mode .travel-cta {
+    background: var(--gold);
+  }
+
+  body.light-mode .travel-cta h2 {
+    color: var(--navy);
+  }
+
+  .travel-ticker {
+    background: var(--dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .travel-ticker .ticker-item {
+    color: var(--gold);
+  }
+
+  .travel-ticker .ticker-dot {
+    background: rgba(201,168,76,0.5);
+  }
+
+  @media (max-width: 900px) {
+    .travel-grid {
+      grid-template-columns: 1fr;
+    }
+    .spotlight-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .travel-section, .travel-spotlight, .travel-quote, .travel-cta {
+      padding: 60px 30px;
+    }
+    .spotlight-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="preloader-content">
+    <div class="preloader-logo">ARRIVAL<span>.</span></div>
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+    <div class="preloader-text">Loading...</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../pages/index.html">ARRIVAL<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="travel.html">Travel</a></li>
+    <li><a href="hospitality.html">Hospitality</a></li>
+    <li><a href="culture.html">Culture</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon dark">☀️</span>
+      <span class="theme-icon light">🌙</span>
+      <span class="theme-text"></span>
+    </button>
+    <a class="nav-cta" href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- TRAVEL HERO -->
+<section class="travel-hero">
+  <div class="travel-hero-bg"></div>
+  <div class="travel-hero-content">
+    <div class="travel-hero-tag">Travel</div>
+    <h1>Where Africa <em>Moves</em>.<br>Where Stories Begin.</h1>
+    <p class="travel-hero-sub">Travel is more than movement. It is discovery. It is identity. It is connection.</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap travel-ticker">
+  <div class="ticker">
+    <span class="ticker-item">Luxury Travel <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Safari Adventures <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cultural Immersion <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Beach Escapes <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Eco Tourism <span class="ticker-dot"></span></span>
+    <span class="ticker-item">City Breaks <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Luxury Travel <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Safari Adventures <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cultural Immersion <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Beach Escapes <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Eco Tourism <span class="ticker-dot"></span></span>
+    <span class="ticker-item">City Breaks <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- TRAVEL INTRO -->
+<section class="travel-section">
+  <div class="travel-intro">
+    <h2>The New <em>African</em> Travel Narrative</h2>
+    <p>For decades, Africa's travel stories were told from the outside looking in. We are rewriting that script. From the buzzing energy of Lagos to the coastal calm of Accra, from safari elegance in East Africa to emerging island luxury experiences, ARRIVAL brings you travel stories told with depth, dignity, and aspiration.</p>
+  </div>
+
+  <div class="travel-grid">
+    <div class="travel-card">
+      <h3>Destination Features</h3>
+      <p>Every destination has layers. In ARRIVAL Travel, we go beyond tourist checklists to uncover the people shaping local tourism, hidden gems only locals know, and the intersection of travel, business, and opportunity.</p>
+      <ul>
+        <li>Underrated destinations across Africa</li>
+        <li>Luxury and boutique escapes</li>
+        <li>Cultural immersion experiences</li>
+        <li>Weekend getaway ideas</li>
+      </ul>
+    </div>
+
+    <div class="travel-card">
+      <h3>Luxury & Experiential Travel</h3>
+      <p>Africa's luxury story is evolving — and it is bold. Private island resorts. Eco-lodges. Designer safari camps. Heritage hotels restored to modern elegance. We curate experiences that combine exclusivity with authenticity.</p>
+      <ul>
+        <li>Personalised experiences</li>
+        <li>Cultural respect</li>
+        <li>World-class service</li>
+        <li>Thoughtful sustainability</li>
+      </ul>
+    </div>
+
+    <div class="travel-card">
+      <h3>Smart Travel</h3>
+      <p>Today's traveler is informed, digital, and intentional. We provide travel planning insights, budget comparisons, best seasons to visit, travel tech tools, and airport navigation tips.</p>
+      <ul>
+        <li>Travel planning insights</li>
+        <li>Travel tech and digital tools</li>
+        <li>Safety and health advisories</li>
+        <li>Visa updates</li>
+      </ul>
+    </div>
+
+    <div class="travel-card">
+      <h3>Sustainable & Responsible Tourism</h3>
+      <p>Africa's future depends on how we explore it. We advocate for travel that supports local communities, preserves ecosystems, promotes cultural heritage, and encourages ethical tourism investments.</p>
+      <ul>
+        <li>Local community support</li>
+        <li>Ecosystem preservation</li>
+        <li>Cultural heritage promotion</li>
+        <li>Ethical tourism</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT -->
+<section class="travel-spotlight">
+  <div class="spotlight-header">
+    <h2>Explore Africa <em>Differently</em></h2>
+  </div>
+  <div class="spotlight-grid">
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=700&q=80" alt="Lagos">
+      <div class="spotlight-overlay">
+        <span>Energy</span>
+        <h4>Lagos</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=80" alt="Cape Town">
+      <div class="spotlight-overlay">
+        <span>Adventure</span>
+        <h4>Cape Town</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=700&q=80" alt="Nairobi">
+      <div class="spotlight-overlay">
+        <span>Safari</span>
+        <h4>Nairobi</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=80" alt="Accra">
+      <div class="spotlight-overlay">
+        <span>Culture</span>
+        <h4>Accra</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=700&q=80" alt="Marrakesh">
+      <div class="spotlight-overlay">
+        <span>Heritage</span>
+        <h4>Marrakesh</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=700&q=80" alt="Kigali">
+      <div class="spotlight-overlay">
+        <span>Sustainability</span>
+        <h4>Kigali</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=700&q=80" alt="Johannesburg">
+      <div class="spotlight-overlay">
+        <span>Business</span>
+        <h4>Johannesburg</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=700&q=80" alt="Zanzibar">
+      <div class="spotlight-overlay">
+        <span>Island</span>
+        <h4>Zanzibar</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=700&q=80" alt="Addis Ababa">
+      <div class="spotlight-overlay">
+        <span>History</span>
+        <h4>Addis Ababa</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1531685250784-7569952593d2?w=700&q=80" alt="Dakar">
+      <div class="spotlight-overlay">
+        <span>Arts</span>
+        <h4>Dakar</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1590642916589-592b42534883?w=700&q=80" alt="Kumasi">
+      <div class="spotlight-overlay">
+        <span>Tradition</span>
+        <h4>Kumasi</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=700&q=80" alt="Victoria Falls">
+      <div class="spotlight-overlay">
+        <span>Nature</span>
+        <h4>Victoria Falls</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="travel-quote">
+  <blockquote>
+    "Travel is not just about where you go — it's about how you go, why you go, and what you take back with you."
+  </blockquote>
+  <cite>— ARRIVAL Magazine</cite>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Luxury Travel <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Safari Adventures <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cultural Immersion <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Beach Escapes <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Eco Tourism <span class="ticker-dot"></span></span>
+    <span class="ticker-item">City Breaks <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Luxury Travel <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Safari Adventures <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cultural Immersion <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Beach Escapes <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Eco Tourism <span class="ticker-dot"></span></span>
+    <span class="ticker-item">City Breaks <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="travel-cta">
+  <h2>Start Your Journey</h2>
+  <p>Every journey is an arrival. And every arrival tells a story. Explore Africa with ARRIVAL.</p>
+  <a href="#" class="travel-cta-btn">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">ARRIVAL</div>
+      <p class="footer-tagline">Nigeria's premier aviation and lifestyle publication. Reframing Africa through travel, luxury, and global connectivity since 2005.</p>
+      <div class="footer-contact">
+        <div><a href="mailto:hello@ngarrival.com">hello@ngarrival.com</a></div>
+        <div><a href="mailto:sales@ngarrival.com">sales@ngarrival.com</a></div>
+        <div>+234 803 337 0666</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="#">Aviation</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Hospitality</a></li>
+        <li><a href="#">Culture</a></li>
+        <li><a href="#">Lifestyle</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Distribution</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Offices</h4>
+      <ul>
+        <li><a href="#">Lagos, Nigeria</a></li>
+        <li><a href="#">Nairobi, Kenya</a></li>
+        <li><a href="#">Accra, Ghana</a></li>
+        <li><a href="#">ngarrival.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ARRIVAL Magazine. All rights reserved.</span>
+    <span>Lagos · Nairobi · Accra</span>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

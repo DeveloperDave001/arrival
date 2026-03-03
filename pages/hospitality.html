@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospitality - ARRIVAL Magazine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .hospitality-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hospitality-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,104,0.7) 0%, rgba(0,0,104,0.5) 50%, rgba(0,0,104,0.85) 100%),
+      url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .hospitality-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    max-width: 900px;
+  }
+
+  .hospitality-hero-tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 8px 20px;
+  }
+
+  .hospitality-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .hospitality-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hospitality-hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hospitality-section {
+    padding: 100px 60px;
+    background: var(--black);
+  }
+
+  .hospitality-intro {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+
+  .hospitality-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .hospitality-intro h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hospitality-intro p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: rgba(245,242,236,0.7);
+  }
+
+  .hospitality-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .hospitality-card {
+    padding: 35px;
+    background: var(--dark);
+    border-top: 3px solid var(--gold);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hospitality-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+
+  .hospitality-card-center {
+    grid-column: 2 / span 1;
+    text-align: center;
+  }
+
+  .hospitality-card-center ul {
+    display: inline-block;
+  }
+
+  .hospitality-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .hospitality-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(245,242,236,0.6);
+  }
+
+  .hospitality-card ul {
+    margin-top: 20px;
+    list-style: none;
+  }
+
+  .hospitality-card ul li {
+    font-size: 14px;
+    color: rgba(245,242,236,0.7);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hospitality-card ul li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 8px;
+  }
+
+  .hospitality-spotlight {
+    padding: 100px 60px;
+    background: var(--black);
+    position: relative;
+  }
+
+  .hospitality-spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .spotlight-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .spotlight-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .spotlight-header h2 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .spotlight-item {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .spotlight-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .spotlight-item:hover img {
+    transform: scale(1.08);
+  }
+
+  .spotlight-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,104,0.9) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+  }
+
+  .spotlight-overlay h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .spotlight-overlay span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hospitality-quote {
+    padding: 120px 60px;
+    background: var(--dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hospitality-quote::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+  }
+
+  .hospitality-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--white);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hospitality-quote blockquote strong {
+    color: var(--gold);
+  }
+
+  .hospitality-quote cite {
+    display: block;
+    margin-top: 30px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .hospitality-cta {
+    padding: 100px 60px;
+    background: var(--gold);
+    text-align: center;
+  }
+
+  .hospitality-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .hospitality-cta p {
+    font-size: 16px;
+    color: rgba(0,0,104,0.7);
+    max-width: 500px;
+    margin: 0 auto 30px;
+  }
+
+  .hospitality-cta-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    padding: 16px 40px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .hospitality-cta-btn:hover {
+    background: var(--dark-2);
+  }
+
+  /* Light mode styles */
+  body.light-mode .hospitality-section {
+    background: var(--black);
+  }
+
+  body.light-mode .hospitality-spotlight {
+    background: var(--black);
+  }
+
+  body.light-mode .hospitality-quote {
+    background: var(--dark);
+  }
+
+  body.light-mode .hospitality-card {
+    background: var(--dark-2);
+  }
+
+  body.light-mode .hospitality-card h3 {
+    color: var(--white);
+  }
+
+  body.light-mode .hospitality-intro h2,
+  body.light-mode .spotlight-header h2,
+  body.light-mode .hospitality-quote blockquote {
+    color: var(--white);
+  }
+
+  body.light-mode .hospitality-intro p,
+  body.light-mode .hospitality-card p,
+  body.light-mode .hospitality-card ul li {
+    color: rgba(255,255,255,0.7);
+  }
+
+  body.light-mode .hospitality-hero-bg {
+    background: linear-gradient(to bottom, rgba(0,0,104,0.7) 0%, rgba(0,0,104,0.5) 50%, rgba(0,0,104,0.85) 100%),
+      url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1600&q=80') center/cover no-repeat;
+  }
+
+  body.light-mode .hospitality-cta {
+    background: var(--gold);
+  }
+
+  body.light-mode .hospitality-cta h2 {
+    color: var(--navy);
+  }
+
+  @media (max-width: 900px) {
+    .hospitality-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .spotlight-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hospitality-section, .hospitality-spotlight, .hospitality-quote, .hospitality-cta {
+      padding: 60px 30px;
+    }
+    .hospitality-grid {
+      grid-template-columns: 1fr;
+    }
+    .spotlight-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="preloader-content">
+    <div class="preloader-logo">ARRIVAL<span>.</span></div>
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+    <div class="preloader-text">Loading...</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">ARRIVAL<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="travel.html">Travel</a></li>
+    <li><a href="hospitality.html">Hospitality</a></li>
+    <li><a href="culture.html">Culture</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon dark">☀️</span>
+      <span class="theme-icon light">🌙</span>
+      <span class="theme-text"></span>
+    </button>
+    <a class="nav-cta" href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HOSPITALITY HERO -->
+<section class="hospitality-hero">
+  <div class="hospitality-hero-bg"></div>
+  <div class="hospitality-hero-content">
+    <div class="hospitality-hero-tag">Hospitality</div>
+    <h1>Curating Africa's <em>Finest</em><br>Stays, Service & Standards</h1>
+    <p class="hospitality-hero-sub">By ARRIVAL Magazine — Hospitality is where travel becomes memory.</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap hospitality-ticker">
+  <div class="ticker">
+    <span class="ticker-item">Luxury Hotels <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Boutique Resorts <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Fine Dining <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Airport Lounges <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Spa & Wellness <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Sustainable Stays <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Luxury Hotels <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Boutique Resorts <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Fine Dining <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Airport Lounges <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Spa & Wellness <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Sustainable Stays <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- HOSPITALITY INTRO -->
+<section class="hospitality-section">
+  <div class="hospitality-intro">
+    <h2>The Rise of <em>African</em> Hospitality</h2>
+    <p>Africa's hospitality sector is no longer emerging — it is evolving. From internationally branded five-star properties to locally owned boutique hotels that tell deeply personal stories, the continent is witnessing massive infrastructure upgrades, airport-adjacent hotel developments, growth in business travel accommodation, expansion of resort destinations, and increased investor confidence in tourism.</p>
+  </div>
+
+  <div class="hospitality-grid">
+    <div class="hospitality-card">
+      <h3>Hotel & Resort Features</h3>
+      <p>We go beyond room tours. Our property features explore architectural inspiration and design philosophy, ownership and investment vision, guest experience standards, sustainability initiatives, culinary excellence, and service culture.</p>
+      <ul>
+        <li>Luxury high-rises</li>
+        <li>Beachfront escapes</li>
+        <li>Safari lodges</li>
+        <li>Boutique hotels</li>
+      </ul>
+    </div>
+
+    <div class="hospitality-card">
+      <h3>Luxury, Reimagined</h3>
+      <p>Luxury in Africa is not imitation — it is innovation. Modern hospitality on the continent now merges indigenous art and design, smart-room technologies, wellness and spa experiences, private aviation accessibility, and curated cultural experiences.</p>
+      <ul>
+        <li>Indigenous design</li>
+        <li>Smart-room tech</li>
+        <li>Wellness & spa</li>
+        <li>Cultural experiences</li>
+      </ul>
+    </div>
+
+    <div class="hospitality-card">
+      <h3>Airport Hospitality</h3>
+      <p>With ARRIVAL's strong aviation heritage, we pay close attention to airport hospitality: executive lounges, VIP terminals, transit hotels, concierge services, and business travel amenities.</p>
+      <ul>
+        <li>Executive lounges</li>
+        <li>VIP terminals</li>
+        <li>Transit hotels</li>
+        <li>Business amenities</li>
+      </ul>
+    </div>
+
+    <div class="hospitality-card hospitality-card-center">
+      <h3>Culinary Excellence</h3>
+      <p>Hospitality extends to the table. From fine dining restaurants to chef-driven concepts within hotels, we explore emerging African culinary trends, farm-to-table movements, indigenous cuisine reimagined, and hospitality-led food innovation.</p>
+      <ul>
+        <li>Fine dining</li>
+        <li>Farm-to-table</li>
+        <li>Chef concepts</li>
+        <li>Mixology culture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT -->
+<section class="hospitality-spotlight">
+  <div class="spotlight-header">
+    <h2>Featured <em>Properties</em></h2>
+  </div>
+  <div class="spotlight-grid">
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80" alt="Lagos Hotel">
+      <div class="spotlight-overlay">
+        <span>Luxury</span>
+        <h4>Lagos</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=80" alt="Resort">
+      <div class="spotlight-overlay">
+        <span>Resort</span>
+        <h4>Zanzibar</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=700&q=80" alt="Nairobi">
+      <div class="spotlight-overlay">
+        <span>Business</span>
+        <h4>Nairobi</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=700&q=80" alt="Cape Town">
+      <div class="spotlight-overlay">
+        <span>Boutique</span>
+        <h4>Cape Town</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=80" alt="Accra">
+      <div class="spotlight-overlay">
+        <span>Beach</span>
+        <h4>Accra</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebf6?w=700&q=80" alt="Safari Lodge">
+      <div class="spotlight-overlay">
+        <span>Safari</span>
+        <h4>Masai Mara</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=700&q=80" alt="Marrakesh">
+      <div class="spotlight-overlay">
+        <span>Heritage</span>
+        <h4>Marrakesh</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=80" alt="Victoria Falls">
+      <div class="spotlight-overlay">
+        <span>Resort</span>
+        <h4>Victoria Falls</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=700&q=80" alt="Kigali">
+      <div class="spotlight-overlay">
+        <span>Sustainable</span>
+        <h4>Kigali</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=700&q=80" alt="Johannesburg">
+      <div class="spotlight-overlay">
+        <span>Urban</span>
+        <h4>Johannesburg</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=80" alt="Dakar">
+      <div class="spotlight-overlay">
+        <span>Cultural</span>
+        <h4>Dakar</h4>
+      </div>
+    </div>
+    <div class="spotlight-item">
+      <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=700&q=80" alt="Kumasi">
+      <div class="spotlight-overlay">
+        <span>Heritage</span>
+        <h4>Kumasi</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="hospitality-quote">
+  <blockquote>
+    "Every great hotel tells a story. Every memorable stay leaves a mark."
+  </blockquote>
+  <cite>— ARRIVAL Magazine</cite>
+</section>
+
+<!-- CTA -->
+<section class="hospitality-cta">
+  <h2>Experience Excellence</h2>
+  <p>Discover Africa's finest hospitality — refined, ambitious, and globally connected.</p>
+  <a href="#" class="hospitality-cta-btn">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">ARRIVAL</div>
+      <p class="footer-tagline">Nigeria's premier aviation and lifestyle publication. Reframing Africa through travel, luxury, and global connectivity since 2005.</p>
+      <div class="footer-contact">
+        <div><a href="mailto:hello@ngarrival.com">hello@ngarrival.com</a></div>
+        <div><a href="mailto:sales@ngarrival.com">sales@ngarrival.com</a></div>
+        <div>+234 803 337 0666</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="#">Aviation</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Hospitality</a></li>
+        <li><a href="#">Culture</a></li>
+        <li><a href="#">Lifestyle</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Distribution</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Offices</h4>
+      <ul>
+        <li><a href="#">Lagos, Nigeria</a></li>
+        <li><a href="#">Nairobi, Kenya</a></li>
+        <li><a href="#">Accra, Ghana</a></li>
+        <li><a href="#">ngarrival.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ARRIVAL Magazine. All rights reserved.</span>
+    <span>Lagos · Nairobi · Accra</span>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
